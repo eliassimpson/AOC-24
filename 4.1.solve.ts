@@ -9,7 +9,6 @@ const solve = (input: string) => {
 
   const builtLines: string[] = [];
 
-  console.log("1. " + lines.length);
   builtLines.push(...lines);
 
   const verticalStrings: string[] = [];
@@ -22,7 +21,6 @@ const solve = (input: string) => {
     }
   }
 
-  console.log("2. " + verticalStrings.length);
   builtLines.push(...verticalStrings);
 
   let diagnalStrings: string[] = [];
@@ -52,7 +50,6 @@ const solve = (input: string) => {
     }
   }
 
-  console.log("3. " + diagnalStrings.length);
   builtLines.push(...diagnalStrings);
 
   diagnalStrings = [];
@@ -82,7 +79,6 @@ const solve = (input: string) => {
     }
   }
 
-  console.log("4. " + diagnalStrings.length);
   builtLines.push(...diagnalStrings);
 
   const xmasRegex: RegExp = /XMAS/g;
