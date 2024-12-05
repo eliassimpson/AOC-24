@@ -89,10 +89,8 @@ const solve = (input: string) => {
   for (const line of builtLines) {
     const xmasMatches = line.match(xmasRegex);
     sum += xmasMatches ? xmasMatches.length : 0;
-    console.log(xmasMatches?.length);
     const samxMatches = line.match(samxRegex);
     sum += samxMatches ? samxMatches.length : 0;
-    console.log(samxMatches?.length);
   }
 
   return sum;
