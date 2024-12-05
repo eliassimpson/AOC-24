@@ -1,6 +1,6 @@
 import { input } from "./2.input.ts";
 
-const reports: String[] = input.trim().split("\n");
+const reports: string[] = input.trim().split("\n");
 
 const reportsLevels: number[][] = [];
 for (const report of reports) {
@@ -11,7 +11,7 @@ let sum = 0;
 
 for (const reportLevel of reportsLevels) {
   let isSafe: boolean = true;
-  let increaseNotDecrease = reportLevel[0] < reportLevel[1] ? true : false;
+  const increaseNotDecrease = reportLevel[0] < reportLevel[1] ? true : false;
 
   for (let i = 0; i < reportLevel.length - 1; i++) {
     if (increaseNotDecrease && reportLevel[i] > reportLevel[i + 1]) {
