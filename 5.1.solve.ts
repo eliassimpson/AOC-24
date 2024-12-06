@@ -29,12 +29,7 @@ const solve = (input: string) => {
     const printedPages: string[] = [pages[0]];
 
     pages.forEach((page) => {
-      const rules = new Set(rulesMap[page]);
-      const apply = new Set(pages);
-      const appliedRulesSet = new Set(
-        [...rules].filter((rule) => apply.has(rule))
-      );
-      const applyRules = Array.from(appliedRulesSet);
+      const applyRules = getRulesToApply(page, rulesMap, pages);
 
       for (const must of applyRules ?? []) {
         if (!printedPages.includes(must)) {
@@ -56,36 +51,49 @@ const solve = (input: string) => {
   }, 0);
 };
 
-(() => {
-  const result = solve(`47|53
-    97|13
-    97|61
-    97|47
-    75|29
-    61|13
-    75|53
-    29|13
-    97|29
-    53|29
-    61|53
-    97|53
-    61|29
-    47|13
-    75|47
-    97|75
-    47|61
-    75|61
-    47|29
-    75|13
-    53|13
+export const getRulesToApply = (
+  page: string,
+  rulesMap: Record<string, string[]>,
+  pages: string[]
+) => {
+  const rules = new Set(rulesMap[page]);
+  const apply = new Set(pages);
+  const appliedRulesSet = new Set([...rules].filter((rule) => apply.has(rule)));
+  return Array.from(appliedRulesSet);
+};
 
-    75,47,61,53,29
-    97,61,53,29,13
-    75,29,13
-    75,97,47,61,53
-    61,13,29
-    97,13,75,29,47`);
-  expect(result).toEqual(143);
-})();
+if (import.meta.main) {
+  (() => {
+    const result = solve(`47|53
+            97|13
+            97|61
+            97|47
+            75|29
+            61|13
+            75|53
+            29|13
+            97|29
+            53|29
+            61|53
+            97|53
+            61|29
+            47|13
+            75|47
+            97|75
+            47|61
+            75|61
+            47|29
+            75|13
+            53|13
+            
+            75,47,61,53,29
+            97,61,53,29,13
+            75,29,13
+            75,97,47,61,53
+            61,13,29
+            97,13,75,29,47`);
+    expect(result).toEqual(143);
+  })();
 
-console.log(solve(input));
+  console.log(solve(input));
+}
